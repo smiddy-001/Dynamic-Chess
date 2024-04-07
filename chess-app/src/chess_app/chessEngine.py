@@ -25,7 +25,7 @@ from piece_setups import PieceMovements
 
 # CONSTANTS
 # =========
-from icons import CRAB_CHESS, NORMAL_CHESS, TILE_XML_TEMPLATE
+from icons import CRAB_CHESS_ICONS, NORMAL_CHESS_ICONS
 from piece_setups import pawn, knight, rook, bishop, queen, king, wizard
 
 BOARD_TEMPLATE = [
@@ -61,8 +61,7 @@ COLOR_MAPS = {"!": None, "-": None, "w": "white", "b": "black"}
 PIECE_MAPS = {"!": "hidden", "-": "empty", "p": "pawn", "r": "rook", "h": "knight", "b": "bishop", "q": "queen", "k": "king",
               "w": "wizard"}
 PLAIN_BOARD_N_OF_PLAYERS = 2
-MAX_BOARD_X = 16
-MAX_BOARD_Y = 16
+MAX_BOARD = 16
 
 GAME_MODES = {"normal", "wizard"}
 GAME_SKINS = {"normal", "crab"}
@@ -76,37 +75,32 @@ current_game_mode = "normal"  # from
 
 
 def start_game():
-    game_mode = "wizard" # in GAME_MODES
-    game_skin = "normal" # in GAME_SKINS
+    game_mode = "normal" # in GAME_MODES
+    game_skin = "crab" # in GAME_SKINS
     if game_mode == "normal":
         my_game_board = ChessBoard(BOARD_TEMPLATE)
     elif game_mode == "wizard":
         my_game_board = ChessBoard(WIZARD_BOARD_TEMPLATE)
 
     if game_skin == "normal":
-        my_game_skin = NORMAL_CHESS
+        my_game_skin = NORMAL_CHESS_ICONS
     elif game_skin == "crab":
-        my_game_skin = CRAB_CHESS
+        my_game_skin = CRAB_CHESS_ICONS
 
     list_to_show_user = []
 
     result = []
     i = 0
-    for x, rows in enumerate(my_game_board.board):
+    for y_val, rows in enumerate(my_game_board.board):
         lil_result = []
-        for y, cell in enumerate(rows):
+        for x_val, cell in enumerate(rows):
+            i = y_val % len(my_game_skin["empty"]) + x_val
             if cell.name == "empty":
-                i += 1
                 variation_icon_size = len(my_game_skin["empty"])
-                # print(my_game_skin, piece.color, i % variation_icon_size)
-                lil_result.append((list(my_game_skin["empty"])[i % variation_icon_size], generate_piece_id("empty", x, y)))
+                lil_result.append((list(my_game_skin["empty"])[i % variation_icon_size], generate_piece_id("empty", y_val, x_val)))
             elif cell.name != "hidden":
-                # print(my_game_skin[piece.color], "name:", piece.name)
-                lil_result.append((my_game_skin[cell.color][cell.name], generate_piece_id(cell.name, x, y)))
+                lil_result.append((my_game_skin[cell.color][cell.name], generate_piece_id(cell.name, y_val, x_val)))
         result.append(lil_result)
-        # if i % variation_icon_size == 1:  # only if 'i' is even
-        #     i += 1
-
     return result
 
 

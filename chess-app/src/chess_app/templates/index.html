@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Chess Game{% endblock %}
+
+{% include "settings.html" %}
+
+{% block content %}
+    <div id="chess-board" style="display: flex; flex-direction: column;height: 32rem">
+        {% include "chess.html" %}
+    </div>
+{% endblock %}

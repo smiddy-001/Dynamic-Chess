@@ -1,0 +1,32 @@
+<div class="filter" style="place-self: center">
+        <input type="radio" id="tag-0" class="filter-tag" name="filter-radio" hidden checked>
+        <input type="radio" id="tag-1" class="filter-tag" name="filter-radio" hidden>
+        <input type="radio" id="tag-2" class="filter-tag" name="filter-radio" hidden>
+        <input type="radio" id="tag-3" class="filter-tag" name="filter-radio" hidden>
+        <input type="radio" id="tag-4" class="filter-tag" name="filter-radio" hidden>
+
+        <div class="filter-nav">
+            <label class="chip" for="tag-0">All</label>
+            <label class="chip" for="tag-1">Game</label>
+            <label class="chip" for="tag-2">Appearance</label>
+            <label class="chip" for="tag-3">Experiments</label>
+            <label class="chip" for="tag-4">Developer</label>
+        </div>
+            <form method="POST" action="/update_settings" class="form-horizontal ">
+                {# Render input fields based on the config structure #}
+                {% for key, value in my_config.items() %}
+                    <div class="form-group">
+                        <div class="col-3 col-sm-12" style="place-self: center">
+                            <label class="form-label" for="skin-options">{{ key }}</label>
+                        </div>
+                        <div class="form-label col-9 col-sm-12">
+                            <label>
+                                <input type="text" name="{{ key }}" value="{{ value }}">
+                            </label>
+                        </div>
+                    </div>
+                {% endfor %}
+                <button type="submit">Save Settings</button>
+            </form>
+        </form>
+    </div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {# Add any common stylesheets or scripts here #}
+    <link rel="stylesheet" href="../static/dist/spectre.min.css">
+    <link rel="stylesheet" href="../static/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="../static/dist/spectre-icons.css.min.css">
+
+</head>
+<body>
+<header class="text-center flex-centered" style="height: 22rem; display: grid">
+
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    {# Add any common footer content here #}
+</footer>
+</body>
+</html>

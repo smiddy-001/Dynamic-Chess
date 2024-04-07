@@ -1,0 +1,13 @@
+{# Loop through each row of the chess board #}
+{% for row in chess_board %}
+    <div style="display: flex; place-self: center">
+        {# Loop through each square in the row #}
+        {% for square in row %}
+            <div id="{{ square.1 }}" style="display: grid;height: {{ cell_size }}; width: {{ cell_size }}px; aspect-ratio: 1; background-color: {{ color_1 }};color: {{  color_2 }}">
+                <span style="place-self: center; font-size: {{ cell_size * 0.5 - 0.1 }}px; aspect-ratio: 1;">
+                    {{ square.0.split()[0] }}
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}

@@ -1,0 +1,94 @@
+{
+  "Game": {
+    "modes": [
+      "normal",
+      "wizard"
+    ],
+    "pieces": [
+      "rook",
+      "knight",
+      "bishop",
+      "queen",
+      "king",
+      "wizard"
+    ]
+  },
+  "Appearance": {
+    "background": "#ffffff",
+    "SQUARE_SIZE": "24px",
+    "FONT_SIZE": "24px"
+  },
+  "Experiments": {
+    "normal": {
+      "use_xml_template": true,
+      "empty": ["▤", "▥"],
+      "white": {
+          "pawn": "♙",
+          "rook": "♖",
+          "knight": "♘",
+          "bishop": "♗",
+          "king": "♔",
+          "queen": "♕",
+          "wizard": "🧙"
+      },
+      "black": {
+          "pawn": "♟",
+          "rook": "♜",
+          "knight": "♞",
+          "bishop": "♝",
+          "king": "♚",
+          "queen": "♛",
+          "wizard": "🧙"
+      }
+    },
+    "crab": {
+      "use_xml_template": true,
+      "empty": [" ", "🌊 ", "💭"],
+      "white": {
+          "pawn": "👮",
+          "rook": "🏰",
+          "knight": "🏇",
+          "bishop": "🤺",
+          "king": "🤴",
+          "queen": "👸",
+          "wizard": "🧙"
+      },
+      "black": {
+          "pawn": "🍤",
+          "rook": "🐙",
+          "knight": "🦐",
+          "bishop": "🦑",
+          "king": "🦞",
+          "queen": "🦀",
+          "wizard": "🎏"
+      }
+  }
+  },
+  "Developer": {
+    "COLOR_MAPS": {"!": null, "-": null, "w": "white", "b": "black"},
+    "PIECE_MAPS": {"!": "hidden", "-": "empty", "p": "pawn", "r": "rook", "h": "knight", "b": "bishop", "q": "queen", "k": "king", "w": "wizard"},
+    "MAX_BOARD_SIZE": 16,
+    "PIECES_THAT_REQUIRE_BOARD_INFO": ["wizard"],
+    "NON_MOVABLE_PIECE_TYPES": ["empty", "hidden"],
+    "BOARD_TEMPLATE": [
+    ["br", "bh", "bb", "bq", "bk", "bb", "bh", "br"],
+    ["bp", "bp", "bp", "bp", "bp", "bp", "bp", "bp"],
+    ["--", "--", "--", "--", "--", "--", "--", "--"],
+    ["--", "--", "--", "--", "--", "--", "--", "--"],
+    ["--", "--", "--", "--", "--", "--", "--", "--"],
+    ["--", "--", "--", "--", "--", "--", "--", "--"],
+    ["wp", "wp", "wp", "wp", "wp", "wp", "wp", "wp"],
+    ["wr", "wh", "wb", "wk", "wq", "wb", "wh", "wr"]],
+    "WIZARD_BOARD_TEMPLATE": [
+    ["!!", "!!", "!!", "!!", "!!", "!!", "!!", "!!", "!!", "!!", "!!"],
+    ["!!", "br", "bh", "bb", "bq", "bw", "bk", "bb", "bh", "br", "!!"],
+    ["!!", "bp", "bp", "bp", "bp", "bp", "bp", "bp", "bp", "bp", "!!"],
+    ["!!", "--", "--", "--", "--", "--", "--", "--", "--", "--", "!!"],
+    ["!!", "--", "--", "--", "--", "--", "--", "--", "--", "--", "!!"],
+    ["!!", "--", "--", "--", "--", "--", "--", "--", "--", "--", "!!"],
+    ["!!", "--", "--", "--", "--", "--", "--", "--", "--", "--", "!!"],
+    ["!!", "wp", "wp", "wp", "wp", "wp", "wp", "wp", "wp", "wp", "!!"],
+    ["!!", "wr", "wh", "wb", "wk", "ww", "wq", "wb", "wh", "wr", "!!"],
+    ["!!", "!!", "!!", "!!", "!!", "!!", "!!", "!!", "!!", "!!", "!!"]]
+  }
+}

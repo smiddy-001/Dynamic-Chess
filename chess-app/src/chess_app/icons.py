@@ -9,8 +9,9 @@
 # ║♖♘♗♕♔♗♘♖║
 # ╚════════╝
 
-NORMAL_CHESS = {
-    "empty": set({"▤", "_", "▥", " "}),  # idk man
+NORMAL_CHESS_ICONS = {
+    "use_xml_template": True,
+    "empty": set({"▤", "▥"}),  # idk man
     "white": {
         "pawn": "♙",
         "rook": "♖",
@@ -40,8 +41,9 @@ NORMAL_CHESS = {
 # 👮👮👮👮👮👮👮👮
 # 🏰🏇‍🤺👸🤴‍🤺🏇🏰
 
-CRAB_CHESS = {
-    "empty": set({" ", "🌊 ", "💭"}),  # idk man
+CRAB_CHESS_ICONS = {
+    "use_xml_template": True,
+    "empty": [" ", "🌊 ", "💭"],  # idk man
     "white": {  # human
         "pawn": "👮",
         "rook": "🏰",
@@ -68,11 +70,11 @@ CRAB_CHESS = {
 SQUARE_SIZE = "24px"
 
 # attempt #1
-def TILE_XML_TEMPLATE(emoji, id, size: int, color1:str, color2:str): return f"""\
-<div id={id} style="display: grid; width: {size}px; aspect-ratio: 1; background-color: {color1}; border: 4px solid {color1}; outline: 2px {color2} solid; outline-offset: -3px;">
-    <span style="place-self: center; font-size: {(size*0.85) - 0.1}px; aspect-ratio: 1;">
-        {emoji}
-    </span>
-</div>
-"""
+# def TILE_XML_TEMPLATE(emoji, id, size: int, color1:str, color2:str): return f"""\
+# <div id={id} style="display: grid; width: {size}px; aspect-ratio: 1; background-color: {color1}; border: 4px solid {color1}; outline: 2px {color2} solid; outline-offset: -3px;">
+#     <span style="place-self: center; font-size: {(size*0.85) - 0.1}px; aspect-ratio: 1;">
+#         {emoji}
+#     </span>
+# </div>
+# """
 
