@@ -54,11 +54,35 @@
     <input type="radio" id="tag-3" class="filter-tag" name="filter-radio" hidden>
     <input type="radio" id="tag-4" class="filter-tag" name="filter-radio" hidden>
 
-    <div class="accordion">
-
-    {{ my_config | safe }}
-
+    <div class="filter-nav">
+        <label class="chip" for="tag-0">All</label>
+        {% for key, _ in my_config.items() %}
+            <label class="chip" for="tag-{{ loop.index }}">{{ key }}</label>
+        {% endfor %}
     </div>
+
+    <div class="filter-body">
+        <form class="form-horizontal form-group">
+
+            <!-- form switch control -->
+            <div class="form-group">
+              <label class="form-switch">
+                <input type="checkbox">
+                <i class="form-icon"></i> {{ my_config[""] }}
+              </label>
+            </div>
+
+            {{ dfs(my_config) }}
+
+            <button type="submit" formmethod="post" formaction="/update_settings">Save Settings</button>
+            <button type="button" onclick="resetSettings()">Reset Settings</button>
+        </form>
+    </div>
+    <label>
+        <textarea>
+            {{ my_config }}
+        </textarea>
+    </label>
 </div>
 
 <script>
