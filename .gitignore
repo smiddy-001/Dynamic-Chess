@@ -4,6 +4,9 @@ instance/*
 .webassets-cache
 .env
 
+## IDE shite
+.idea/
+
 ### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/
