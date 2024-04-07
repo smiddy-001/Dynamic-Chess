@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "chess-using-flask"
+version = "0.1.0"
+description = ""
+authors = ["Riley Smith <Rileys1000@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+quart = "^0.19.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

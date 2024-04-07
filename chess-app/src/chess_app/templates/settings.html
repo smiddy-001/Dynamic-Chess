@@ -1,32 +1,98 @@
-<div class="filter" style="place-self: center">
-        <input type="radio" id="tag-0" class="filter-tag" name="filter-radio" hidden checked>
-        <input type="radio" id="tag-1" class="filter-tag" name="filter-radio" hidden>
-        <input type="radio" id="tag-2" class="filter-tag" name="filter-radio" hidden>
-        <input type="radio" id="tag-3" class="filter-tag" name="filter-radio" hidden>
-        <input type="radio" id="tag-4" class="filter-tag" name="filter-radio" hidden>
+{#lets get my dfs up and working.#}
+{##}
+{#I have a few rules when doing my custom dfs#}
+{##}
+{#upon dfs, we always add a title <h1>title</h1> where title is the parent to help users know what setting type they are editing#}
+{##}
+{#- If a node is a mapping, we will go deeper#}
+{##}
+{#- if a mapping has a bool, ie "some_key": True -> return:#}
+{#```#}
+{#<div class="form-group">#}
+{#  <label class="form-switch">#}
+{#    <input type="checkbox" {{ if DEFAULT_VALUE  is true return checked else return unchecked }}>#}
+{#    <i class="form-icon"></i> {{ DEFAULT_TITLE }}#}
+{#  </label>#}
+{#</div>#}
+{#```#}
+{##}
+{#- if a mapping has a int, ie "some_key": 123123 -> return:#}
+{#```#}
+{#<div class="form-group">#}
+{#  <label class="form-label" for="input-example-1">DEFAULT_TITLE</label>#}
+{#  <input class="form-input" type="number" id="input-example-1" placeholder="DEFAULT_VALUE">#}
+{#</div>#}
+{#```#}
+{##}
+{#- if a mapping has a str, ie "some_key": "hello world" -> return:#}
+{#```#}
+{#<div class="form-group">#}
+{#  <label class="form-label" for="input-example-1">DEFAULT_TITLE</label>#}
+{#  <input class="form-input" type="text" id="input-example-1" placeholder="DEFAULT_VALUE">#}
+{#</div>#}
+{#```#}
+{##}
+{#- if a mapping has a list of strings or integers, ie "some_key": ["hello world1", "hello world2"] -> return:#}
+{#```#}
+{#<div class="form-group">#}
+{#  <label class="form-label" for="input-example-3">DEFAULT_TITLE</label>#}
+{#  <textarea class="form-input" id="input-example-3" placeholder="DEFAULT_VALUES . split with newlines" rows="len(DEFAULT_VALUES)"></textarea>#}
+{#</div>#}
+{#```#}
+{##}
+{#where DEFAULT_TITLE is the left of the : and DEFAULT_VALUES is on the right of the :#}
+{##}
+{#obviously use python dictionary parsing and you will probably need to include a extra input to the dfs, most notably a location path to the dictionary, so when it is edited it can change the right thing in the json when update_json is called#}
 
-        <div class="filter-nav">
-            <label class="chip" for="tag-0">All</label>
-            <label class="chip" for="tag-1">Game</label>
-            <label class="chip" for="tag-2">Appearance</label>
-            <label class="chip" for="tag-3">Experiments</label>
-            <label class="chip" for="tag-4">Developer</label>
-        </div>
-            <form method="POST" action="/update_settings" class="form-horizontal ">
-                {# Render input fields based on the config structure #}
-                {% for key, value in my_config.items() %}
-                    <div class="form-group">
-                        <div class="col-3 col-sm-12" style="place-self: center">
-                            <label class="form-label" for="skin-options">{{ key }}</label>
-                        </div>
-                        <div class="form-label col-9 col-sm-12">
-                            <label>
-                                <input type="text" name="{{ key }}" value="{{ value }}">
-                            </label>
-                        </div>
-                    </div>
-                {% endfor %}
-                <button type="submit">Save Settings</button>
-            </form>
+
+
+
+<div class="filter container" style="place-self: center">
+    <input type="radio" id="tag-0" class="filter-tag" name="filter-radio" hidden checked>
+    <input type="radio" id="tag-1" class="filter-tag" name="filter-radio" hidden>
+    <input type="radio" id="tag-2" class="filter-tag" name="filter-radio" hidden>
+    <input type="radio" id="tag-3" class="filter-tag" name="filter-radio" hidden>
+    <input type="radio" id="tag-4" class="filter-tag" name="filter-radio" hidden>
+
+    <div class="filter-nav">
+        <label class="chip" for="tag-0">All</label>
+        {% for key, _ in my_config.items() %}
+            <label class="chip" for="tag-{{ loop.index }}">{{ key }}</label>
+        {% endfor %}
+    </div>
+
+    <div class="filter-body">
+        <form class="form-horizontal form-group">
+
+            <!-- form switch control -->
+            <div class="form-group">
+              <label class="form-switch">
+                <input type="checkbox">
+                <i class="form-icon"></i> {{ my_config[""] }}
+              </label>
+            </div>
+
+            {{ dfs(my_config) }}
+
+            <button type="submit" formmethod="post" formaction="/update_settings">Save Settings</button>
+            <button type="button" onclick="resetSettings()">Reset Settings</button>
         </form>
     </div>
+    <label>
+        <textarea>
+            {{ my_config }}
+        </textarea>
+    </label>
+</div>
+
+<script>
+    function resetSettings() {
+        // Clear all form fields
+        document.querySelectorAll('.form-horizontal input[type="text"]').forEach(input => {
+            input.value = '';
+        });
+
+        // Submit the form
+        document.querySelector('.form-horizontal').submit();
+    }
+</script>
