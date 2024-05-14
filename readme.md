@@ -2,7 +2,7 @@
 
 ### made with:
 - ❌flask  https://flask.palletsprojects.com
-- ✅quart (flask with better async) https://github.com/pallets/quart
+- ✅quart (flask with async events) https://github.com/pallets/quart
 - ❌tailwind  https://tailwindui.com/
 - ❌material-ui (tailwind)  https://www.material-tailwind.com
 - ✅spectre.css https://picturepan2.github.io/spectre/
