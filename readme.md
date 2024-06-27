@@ -8,21 +8,6 @@
 - ✅spectre.css https://picturepan2.github.io/spectre/
 - ❌tox (ci testing) https://tox.wiki/en/4.14.2/
 
-```bash
-pip install quart
-```
-
-install and unpack lates spectre.css release
-from https://github.com/picturepan2/spectre/releases
-
-add following to your root html file in the head section
-
-```html
-<link rel="stylesheet" href="spectre.min.css">
-<link rel="stylesheet" href="spectre-exp.min.css">
-<link rel="stylesheet" href="spectre-icons.min.css">
-```
-
 ### Design
 minimal and sleek
 
